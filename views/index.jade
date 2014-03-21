@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  form(method="post" action="/medicos/sanciones")
+    input(name="cedula" id="cedula" placeholder="ingresar cedula")
+    input(name="tarjProf" id="tarjProf" placeholder="ingresar tipo de profesional")
+    input(name="nombres" id="nombres" placeholder="ingresar nombres")
+    input(name="PrimApellido" id="PrimApellido" placeholder="ingresar primer apellido")
+    input(name="SegApellido" id="SegApellido" placeholder="ingresar segundo apellido")
+    br
+    input(name="profesion" id="profesional" placeholder="ingresar profesion")
+    select(name="inhabil" id="inhabil")
+      option(value="si") Si
+      option(value="no") No
+    select(name="estado" id="estado")
+      each estado in estados
+        option(value="#{estado._id}") #{estado.nombre}
+    select(name="sancion" id="sancion")
+      each sancion in sanciones
+        option(value="#{sancion._id}") #{sancion.nombre}
+    input(name="duracion" id="duracion" placeholder="ingresar duracion")
+    br
+    textarea(name="observaciones" id="observaciones" style="width:400px; height:60px;")
+    input(type="submit")
