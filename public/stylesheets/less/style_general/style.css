@@ -1,0 +1,13 @@
+.nav-b {
+  margin-bottom: 20px;
+}
+.nav-b img {
+  width: 100%;
+}
+.col-lg-3 img {
+  width: 100%;
+  height: 300px;
+}
+.content-body {
+  box-shadow: 3px 3px 4px #d3d3d3, -3px -3px 4px #d3d3d3;
+}

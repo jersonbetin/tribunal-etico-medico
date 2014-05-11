@@ -1,24 +1,73 @@
 extends layout
 
 block content
-  form(method="post" action="/medicos/sanciones")
-    input(name="cedula" id="cedula" placeholder="ingresar cedula")
-    input(name="tarjProf" id="tarjProf" placeholder="ingresar tarjeta profesional")
-    input(name="nombres" id="nombres" placeholder="ingresar nombres")
-    input(name="PrimApellido" id="PrimApellido" placeholder="ingresar primer apellido")
-    input(name="SegApellido" id="SegApellido" placeholder="ingresar segundo apellido")
-    br
-    input(name="profesion" id="profesional" placeholder="ingresar profesion")
-    select(name="inhabil" id="inhabil")
-      option(value="si") Si
-      option(value="no") No
-    select(name="estado" id="estado")
-      each estado in estados
-        option(value="#{estado._id}") #{estado.nombre}
-    select(name="sancion" id="sancion")
-      each sancion in sanciones
-        option(value="#{sancion._id}") #{sancion.nombre}
-    input(name="duracion" id="duracion" placeholder="ingresar duracion")
-    br
-    textarea(name="observaciones" id="observaciones" style="width:400px; height:60px;")
-    input(type="submit")
+  .container
+    .row
+      .col-lg-12
+        .col-lg-3
+          img(src="images/estetoscopio_maza.jpg", alt="")
+        .col-lg-9.content-body
+          form(method="post" action="/medicos/sanciones")
+            table.table
+              tr
+                .form-group
+                  td
+                    label(for="cedula") Cedula:
+                  td
+                    input.form-control(name="cedula" id="cedula" placeholder="ingresar cedula")
+                  td
+                    label(for="tarjProf") Tarjeta de identidad:
+                  td
+                    input.form-control(name="tarjProf" id="tarjProf" placeholder="ingresar tarjeta profesional")
+              tr
+                .form-group
+                  td
+                    label(for="nombres") Nombres:
+                  td
+                    input.form-control(name="nombres" id="nombres" placeholder="ingresar nombres")
+                  td
+                    label(for="PrimApellido") Primer apellido:
+                  td
+                    input.form-control(name="PrimApellido" id="PrimApellido" placeholder="ingresar primer apellido")
+              tr
+                .form-group
+                  td
+                    label(for="SegApellido") Segundo apellido:
+                  td
+                    input.form-control(name="SegApellido" id="SegApellido" placeholder="ingresar segundo apellido")
+                  td
+                    label(for="profesion") Tipo de profesion:
+                  td
+                    input.form-control(name="profesion" id="profesional" placeholder="ingresar profesion")
+              tr
+                .form-group
+                  td
+                    label(for="SegApellido") Inhabilidad:
+                  td
+                    select.form-control(name="inhabil" id="inhabil")
+                      option(value="si") Si
+                      option(value="no") No
+                  td
+                    label(for="estado") Estado:
+                  td
+                    select.form-control(name="estado" id="estado")
+                      each estado in estados
+                        option(value="#{estado._id}") #{estado.nombre}
+              tr
+                .form-group
+                  td
+                    label(for="sancion") Sancion:
+                  td
+                    select.form-control(name="sancion" id="sancion")
+                      each sancion in sanciones
+                        option(value="#{sancion._id}") #{sancion.nombre}
+                  td
+                    label(for="duracion") Duracion:
+                  td
+                    input.form-control(name="duracion" id="duracion" placeholder="ingresar duracion")
+              tr
+                .form-group
+                  td(colspan="2")
+                    textarea.form-control(name="observaciones" id="observaciones" style="height:70px;")
+                  td(colspan="2")
+                    input.btn.btn-primary.col-lg-5(type="submit" style="vertical-align:middle;")
