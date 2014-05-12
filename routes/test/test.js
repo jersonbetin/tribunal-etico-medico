@@ -18,7 +18,7 @@ exports.estados = function (req, res){
 }
 
 exports.sanciones = function (req, res){
-  var sanciones = ['Infracción a la ley', 'Mala practica', 'Abuso a su titulo'];
+  var sanciones = ['Inhabilidad 6 meses', 'Ihabilidad 1 año', 'Inhabilidad 5 años', 'Inhabilidad definitiva'];
   for (var i = 0;  i < sanciones.length; i++) {
       var sancion = new models.sanciones({
         nombre : sanciones[i]
