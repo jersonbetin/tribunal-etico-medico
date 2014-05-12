@@ -105,9 +105,9 @@ function enviarSecretaria(datos, res){
     'observaciones':datos.obs
   });
   var options = {
-        // host: 'secretariadesalud-cordoba.herokuapp.com',
-        host: 'localhost',
-        port: 4000,
+        host: 'secretariadesalud-cordoba.herokuapp.com',
+        // host: 'localhost',
+        // port: 4000,
         path: '/medicos/'+datos.cedula+'/estado',
         method: 'PUT',
         headers : {

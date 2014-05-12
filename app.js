@@ -29,8 +29,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.post('/medicos/sanciones', medicos.saveSancion);
 app.get('/SWsancionMedica/:id', medicos.servicioSancion);
-app.get('/estados', test.estados);
-app.get('/sanciones', test.sanciones);
+// app.get('/estados', test.estados);
+// app.get('/sanciones', test.sanciones);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
