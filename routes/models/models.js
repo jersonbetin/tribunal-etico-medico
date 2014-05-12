@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/tribunal');
-
+//mongoose.connect('mongodb://localhost/tribunal');
+mongoose.connect('mongodb://tribunal:1q2w3e4r@dbh62.mongolab.com:27627/tribuanl-etico');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console,'connection error:'));
 db.once('open', function callback(){
