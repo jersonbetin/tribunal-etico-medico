@@ -4,8 +4,7 @@ var helpers = require('../helpers');
 exports.saveSancion = function (req, res){
   debugger;
   if (helpers.isEmpty(req.body.cedula) && helpers.isEmpty(req.body.tarjProf) && helpers.isEmpty(req.body.nombres) &&
-      helpers.isEmpty(req.body.PrimApellido) && helpers.isEmpty(req.body.SegApellido) && helpers.isEmpty(req.body.profesion) &&
-      helpers.isEmpty(req.body.duracion)) {
+      helpers.isEmpty(req.body.PrimApellido) && helpers.isEmpty(req.body.SegApellido) && helpers.isEmpty(req.body.profesion) ) {
     models.profesionales.create({identificacion :req.body.cedula,TarjProf : req.body.tarjProf,nombres : req.body.nombres,
         apellidos : {primero: req.body.PrimApellido,segundo:req.body.SegApellido},profesion : req.body.profesion,inhabil : req.body.inhabil
     }, function (err, profesional){
@@ -29,8 +28,7 @@ exports.saveSancion = function (req, res){
                   if(!err){
                     models.sancionesAplicadas.create({
                       _sancion : req.body.sancion,
-                      _profesional : doctorID._id,
-                      duracion : req.body.duracion
+                      _profesional : doctorID._id
                     }, function (err, sancionAplicada){
                       if (err) {
                         res.send(err);
@@ -67,8 +65,7 @@ exports.saveSancion = function (req, res){
       }else{
         models.sancionesAplicadas.create({
           _sancion : req.body.sancion,
-          _profesional : profesional._id,
-          duracion : req.body.duracion
+          _profesional : profesional._id
         }, function (err, sancionAplicada){
           if (err) {
             res.send(err);
@@ -158,4 +155,14 @@ exports.servicioSancion = function (req, res){
     // }else{
     //   res.send(401);
     // }
+}
+
+exports.getMedicoById=function(req, res){
+  models.profesionales.findOne({identificacion:req.params.id}, function(err, doctor){
+    if (err) {
+      res.send(err);
+    }else{
+      res.send({doctor:doctor});
+    }
+  });
 }

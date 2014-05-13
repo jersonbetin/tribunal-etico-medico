@@ -1,7 +1,6 @@
 var config = require('./package');
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var test = require('./routes/test/test');
 var medicos = require('./routes/app/medicos');
@@ -28,6 +27,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.post('/medicos/sanciones', medicos.saveSancion);
+app.get('/medico/:id', medicos.getMedicoById);
 app.get('/SWsancionMedica/:id', medicos.servicioSancion);
 // app.get('/estados', test.estados);
 // app.get('/sanciones', test.sanciones);

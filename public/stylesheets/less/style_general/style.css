@@ -11,3 +11,10 @@
 .content-body {
   box-shadow: 3px 3px 4px #d3d3d3, -3px -3px 4px #d3d3d3;
 }
+#exito {
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 0px 10px 0px;
+  display: none;
+}

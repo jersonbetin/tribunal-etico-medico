@@ -7,8 +7,9 @@ block content
         .col-lg-3
           img(src="images/estetoscopio_maza.jpg", alt="")
         .col-lg-9.content-body
-          form(method="post" action="/medicos/sanciones")
+          form#form_datos(method="post" action="/medicos/sanciones")
             table.table
+              caption.alert-info#exito Guardado con exito
               tr
                 .form-group
                   td
@@ -42,7 +43,7 @@ block content
               tr
                 .form-group
                   td
-                    label(for="SegApellido") Inhabilidad:
+                    label(for="inhabil") Inhabilidad:
                   td
                     select.form-control(name="inhabil" id="inhabil")
                       option(value="si") Si
@@ -61,13 +62,52 @@ block content
                     select.form-control(name="sancion" id="sancion")
                       each sancion in sanciones
                         option(value="#{sancion._id}") #{sancion.nombre}
-                  td
-                    label(for="duracion") Duracion:
-                  td
-                    input.form-control(name="duracion" id="duracion" placeholder="ingresar duracion")
-              tr
                 .form-group
                   td(colspan="2")
-                    textarea.form-control(name="observaciones" id="observaciones" style="height:70px;")
+                    textarea.form-control(name="observaciones" id="observaciones" style="height:70px;") Observaciones
+              tr
                   td(colspan="2")
-                    input.btn.btn-primary.col-lg-5(type="submit" style="vertical-align:middle;")
+                    input.btn.btn-primary.col-lg-12(type="submit" id="guardar_sancion" style="vertical-align:middle;" value="guardar")
+                  td(colspan="2")
+                    input.btn.btn-default.col-lg-12(type="reset" style="vertical-align:middle;" value="limpiar")
+block js
+  script.
+    $(document).ready(function(){
+        $('#guardar_sancion').click(function(e){
+            e.preventDefault();
+            $.ajax({
+                method:'post',
+                url:'/medicos/sanciones',
+                data:$('#form_datos').serialize(),
+                success:function(data){
+                  if(data.error==null){
+                    $('#exito').css('display','block');
+                  }else{
+                    $('#exito').css('display','block');
+                  }
+                }
+              });
+          });
+        $('#cedula').blur(function(){
+            $.ajax({
+                method:'get',
+                url:'/medico/'+$(this).val(),
+                success:function(data){
+                  if(data.doctor!=null){
+                    $('#tarjProf').attr('readonly', true);
+                    $('#tarjProf').val(data.doctor.TarjProf);
+                    $('#nombres').val(data.doctor.nombres);
+                    $('#PrimApellido').val(data.doctor.apellidos.primero);
+                    $('#SegApellido').val(data.doctor.apellidos.segundo);
+                    $('#profesional').val(data.doctor.profesion);
+                  }else{
+                    $('#tarjProf').val('');
+                    $('#nombres').val('');
+                    $('#PrimApellido').val('');
+                    $('#SegApellido').val('');
+                    $('#profesional').val('');
+                  }
+                }
+              });
+          });
+      });

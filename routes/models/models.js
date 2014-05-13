@@ -33,8 +33,7 @@ var profesionalesSchema = new Schema({
 
 var sancionesAplicadasSchema = new Schema({
   _sancion : {type: Schema.Types.ObjectId, ref:'sanciones'},
-  _profesional : {type:Schema.Types.ObjectId, ref:'profesionales'},
-  duracion : {type: Number, required:true}
+  _profesional : {type:Schema.Types.ObjectId, ref:'profesionales'}
 });
 
 var sancionesEstadosSchema = new Schema({
