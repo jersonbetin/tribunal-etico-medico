@@ -21,7 +21,7 @@ var sancionesSchema = new Schema({
 
 var profesionalesSchema = new Schema({
   identificacion : {type: String, required: true, unique:true},
-  TarjProf : {type: Number, required: true, unique:true},
+  TarjProf : {type: String, required: true, unique:true},
   nombres : { type: String, required: true},
   apellidos : {
     primero: {type: String, required: true},
