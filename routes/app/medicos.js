@@ -131,7 +131,7 @@ function enviarSecretaria(datos, res){
 }
 
 exports.servicioSancion = function (req, res){
-  res.header("Access-Control-Allow-Origin", "http://localhost:2500");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   var ide = req.params.id;
