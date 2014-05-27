@@ -25,7 +25,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/', routes.inicio);
+app.get('/sanciones', routes.index);
 app.post('/medicos/sanciones', medicos.saveSancion);
 app.get('/medico/:id', medicos.getMedicoById);
 app.get('/SWsancionMedica/:id', medicos.servicioSancion);
