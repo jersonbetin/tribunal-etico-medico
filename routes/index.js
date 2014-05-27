@@ -7,3 +7,7 @@ exports.index = function(req, res){
     });
   });
 };
+
+exports.inicio = function(req, res){
+    res.render('Inicio', { title: 'Inicio'});
+};
